@@ -8,7 +8,7 @@
   "asset_regex": "^rssh-.*-linux-x86_64\\.deb$",
   "pin": {
     "version": "1.0.8",
-    "date": "2026-11-04",
+    "date": "2026-11-05",
     "url": "https://github.com/helloshu/auto-builds/releases/download/rssh-v1.0.8/rssh-1.0.8-linux-x86_64.deb",
     "sha256": "3355ff63e53f5bd44238706ca73c722f1a2c564d08943c495a7556d675fc1c86",
     "size": 21476446
