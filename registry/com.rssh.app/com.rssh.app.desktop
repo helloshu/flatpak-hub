@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=RSSH
+Comment=Modern cross-platform SSH and SFTP terminal client
+Exec=rssh %U
+Icon=com.rssh.app
+Terminal=false
+Type=Application
+Categories=Network;RemoteAccess;Utility;
+StartupWMClass=com.rssh.app

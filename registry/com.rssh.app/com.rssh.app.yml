@@ -1,0 +1,47 @@
+id: com.rssh.app
+runtime: org.gnome.Platform
+runtime-version: "51"
+sdk: org.gnome.Sdk
+command: rssh
+separate-locales: false
+build-options:
+  no-debuginfo: true
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=ssh-auth
+  - --device=dri
+  - --filesystem=~/.ssh:ro
+  - --filesystem=xdg-download
+  - --talk-name=org.freedesktop.Notifications
+modules:
+  - name: rssh
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 apply_extra.sh /app/bin/apply_extra
+      - install -Dm755 rssh-wrapper /app/bin/rssh
+      - install -Dm644 com.rssh.app.desktop /app/share/applications/com.rssh.app.desktop
+      - install -Dm644 com.rssh.app.metainfo.xml /app/share/metainfo/com.rssh.app.metainfo.xml
+      - install -Dm644 com.rssh.app.png /app/share/icons/hicolor/256x256/apps/com.rssh.app.png
+    sources:
+      # BEGIN MANAGED EXTRA-DATA
+      - type: extra-data
+        filename: app.deb
+        only-arches:
+          - x86_64
+        url: https://github.com/helloshu/auto-builds/releases/download/rssh-v1.0.8/rssh-1.0.8-linux-x86_64.deb
+        sha256: 3355ff63e53f5bd44238706ca73c722f1a2c564d08943c495a7556d675fc1c86
+        size: 21476446
+      # END MANAGED EXTRA-DATA
+      - type: file
+        path: apply_extra.sh
+      - type: file
+        path: rssh-wrapper
+      - type: file
+        path: com.rssh.app.desktop
+      - type: file
+        path: com.rssh.app.metainfo.xml
+      - type: file
+        path: com.rssh.app.png

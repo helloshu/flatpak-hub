@@ -1,0 +1,109 @@
+name: Publish Flatpak Hub
+
+on:
+  repository_dispatch:
+    types: [upstream-release]
+  workflow_dispatch:
+    inputs:
+      sync_upstream:
+        description: '从上游构建仓同步最新 Release 元数据'
+        required: false
+        type: boolean
+        default: true
+  push:
+    branches: [main]
+
+concurrency:
+  group: flatpak-hub-pages
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  publish:
+    if: github.event_name != 'push' || github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Update release pin metadata
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          SYNC_UPSTREAM: ${{ inputs.sync_upstream }}
+          P_APP_ID: ${{ github.event.client_payload.app_id }}
+          P_VERSION: ${{ github.event.client_payload.version }}
+          P_URL: ${{ github.event.client_payload.url }}
+          P_SHA256: ${{ github.event.client_payload.sha256 }}
+          P_SIZE: ${{ github.event.client_payload.size }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "repository_dispatch" ] && [ -n "$P_APP_ID" ] && [ -n "$P_URL" ]; then
+            python3 scripts/update_pin.py \
+              --app-id "$P_APP_ID" \
+              --version "$P_VERSION" \
+              --url "$P_URL" \
+              --sha256 "$P_SHA256" \
+              --size "$P_SIZE"
+          elif [ "$EVENT_NAME" = "workflow_dispatch" ] && [ "$SYNC_UPSTREAM" = "true" ]; then
+            python3 scripts/update_pin.py --sync-all
+          else
+            echo "[pin] Using committed registry pins as-is"
+          fi
+
+      - name: Commit updated pins back to main
+        run: |
+          set -euo pipefail
+          if [ -n "$(git status --porcelain registry/)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add registry/
+            git commit -m "chore(pins): sync latest extra-data release metadata"
+            git push origin HEAD:main
+          fi
+
+      - name: Restore OSTree repository cache
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ runner.temp }}/ostree-repo
+          key: ostree-repo-${{ github.run_id }}
+          restore-keys: |
+            ostree-repo-
+
+      - name: Install Flatpak & OSTree toolchain
+        run: |
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y flatpak flatpak-builder ostree libarchive-tools
+
+      - name: Build and GPG-sign extra-data OSTree repository
+        env:
+          FLATPAK_GPG_PRIVATE_KEY: ${{ secrets.FLATPAK_GPG_PRIVATE_KEY }}
+        run: bash scripts/build_ostree.sh "$RUNNER_TEMP/ostree-repo"
+
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Render static Pages bundle
+        env:
+          HUB_BASE_URL: ${{ steps.pages.outputs.base_url }}
+        run: python3 scripts/render_site.py "$RUNNER_TEMP/ostree-repo" "$RUNNER_TEMP/pages-site"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/pages-site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

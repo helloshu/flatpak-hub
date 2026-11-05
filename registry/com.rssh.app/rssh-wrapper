@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+export WEBKIT_DISABLE_DMABUF_RENDERER="${WEBKIT_DISABLE_DMABUF_RENDERER:-1}"
+exec /app/extra/rssh/usr/bin/com.rssh.app "$@"

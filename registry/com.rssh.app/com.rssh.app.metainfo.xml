@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.rssh.app</id>
+  <name>RSSH</name>
+  <summary>Modern cross-platform SSH and SFTP terminal client</summary>
+  <developer id="io.github.shihuili1218">
+    <name>RSSH Contributors</name>
+  </developer>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <description>
+    <p>RSSH is a cross-platform SSH terminal and SFTP file management client built with Rust and Tauri.</p>
+    <p>This Flatpak wrapper fetches the signed upstream release package from helloshu/auto-builds at install time via extra-data and runs it inside the GNOME WebKitGTK sandbox.</p>
+  </description>
+  <launchable type="desktop-id">com.rssh.app.desktop</launchable>
+  <url type="homepage">https://github.com/shihuili1218/rssh</url>
+  <url type="vcs-browser">https://github.com/helloshu/auto-builds</url>
+  <url type="bugtracker">https://github.com/helloshu/flatpak-hub/issues</url>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="1.0.8" date="2026-11-04"/>
+  </releases>
+</component>
