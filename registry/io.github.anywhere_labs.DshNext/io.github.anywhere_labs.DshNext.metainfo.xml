@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.anywhere_labs.DshNext</id>
+  <name>DSH NEXT</name>
+  <summary>Agentic coding desktop for DeepSeek Harness (community build)</summary>
+  <developer id="io.github.anywhere-labs">
+    <name>Anywhere Labs</name>
+  </developer>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <description>
+    <p>DSH NEXT is a community-maintained desktop client for DeepSeek Harness. It is not an official DeepSeek product.</p>
+    <p>This Flatpak wrapper fetches the unsigned upstream Linux package built by helloshu/auto-builds at install time via extra-data and runs it with the Electron base app sandbox.</p>
+  </description>
+  <launchable type="desktop-id">io.github.anywhere_labs.DshNext.desktop</launchable>
+  <url type="homepage">https://github.com/anywhere-labs/dsh-desktop</url>
+  <url type="vcs-browser">https://github.com/helloshu/auto-builds</url>
+  <url type="bugtracker">https://github.com/helloshu/flatpak-hub/issues</url>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="2.0.22-next" date="2026-11-06"/>
+  </releases>
+</component>

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DSH NEXT
+Comment=Agentic coding desktop for DeepSeek Harness (community build)
+Exec=dsh-next-wrapper %U
+Icon=io.github.anywhere_labs.DshNext
+Terminal=false
+Type=Application
+Categories=Development;
+StartupWMClass=DSH NEXT

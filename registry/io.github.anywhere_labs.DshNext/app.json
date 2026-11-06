@@ -1,0 +1,16 @@
+{
+  "id": "io.github.anywhere_labs.DshNext",
+  "name": "DSH NEXT",
+  "summary": "Agentic coding desktop for DeepSeek Harness (community build)",
+  "homepage": "https://github.com/anywhere-labs/dsh-desktop",
+  "source_repo": "helloshu/auto-builds",
+  "tag_prefix": "dsh-desktop-v",
+  "asset_regex": "^DSH-NEXT-.*-amd64\\.deb$",
+  "pin": {
+    "version": "2.0.22-next",
+    "date": "2026-11-06",
+    "url": "https://github.com/helloshu/auto-builds/releases/download/dsh-desktop-v2.0.22-next/DSH-NEXT-2.0.22-next-amd64.deb",
+    "sha256": "334e6dd9deae78613f465bc557570c5f84c43c35c75f51c6bda8e75cf6663493",
+    "size": 335718568
+  }
+}

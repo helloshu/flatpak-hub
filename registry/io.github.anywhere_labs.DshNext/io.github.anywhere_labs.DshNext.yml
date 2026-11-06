@@ -1,0 +1,52 @@
+id: io.github.anywhere_labs.DshNext
+runtime: org.freedesktop.Platform
+runtime-version: &runtime-version "25.08"
+sdk: org.freedesktop.Sdk
+base: org.electronjs.Electron2.BaseApp
+base-version: *runtime-version
+command: dsh-next-wrapper
+separate-locales: false
+build-options:
+  no-debuginfo: true
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --socket=ssh-auth
+  - --device=dri
+  - --filesystem=home
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons
+modules:
+  - name: dsh-next
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 apply_extra.sh /app/bin/apply_extra
+      - install -Dm755 dsh-next-wrapper /app/bin/dsh-next-wrapper
+      - install -Dm644 io.github.anywhere_labs.DshNext.desktop /app/share/applications/io.github.anywhere_labs.DshNext.desktop
+      - install -Dm644 io.github.anywhere_labs.DshNext.metainfo.xml /app/share/metainfo/io.github.anywhere_labs.DshNext.metainfo.xml
+      - install -Dm644 io.github.anywhere_labs.DshNext.png /app/share/icons/hicolor/256x256/apps/io.github.anywhere_labs.DshNext.png
+    sources:
+      # BEGIN MANAGED EXTRA-DATA
+      - type: extra-data
+        filename: app.deb
+        only-arches:
+          - x86_64
+        url: https://github.com/helloshu/auto-builds/releases/download/dsh-desktop-v2.0.22-next/DSH-NEXT-2.0.22-next-amd64.deb
+        sha256: 334e6dd9deae78613f465bc557570c5f84c43c35c75f51c6bda8e75cf6663493
+        size: 335718568
+      # END MANAGED EXTRA-DATA
+      - type: file
+        path: apply_extra.sh
+      - type: file
+        path: dsh-next-wrapper
+      - type: file
+        path: io.github.anywhere_labs.DshNext.desktop
+      - type: file
+        path: io.github.anywhere_labs.DshNext.metainfo.xml
+      - type: file
+        path: io.github.anywhere_labs.DshNext.png
