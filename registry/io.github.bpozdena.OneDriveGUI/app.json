@@ -1,0 +1,16 @@
+{
+  "id": "io.github.bpozdena.OneDriveGUI",
+  "name": "OneDriveGUI",
+  "summary": "A simple GUI for Linux OneDrive Client with multi-account support",
+  "homepage": "https://github.com/bpozdena/OneDriveGUI",
+  "source_repo": "helloshu/auto-builds",
+  "tag_prefix": "onedrivegui-v",
+  "asset_regex": "^OneDriveGUI-.*-amd64\\.deb$",
+  "pin": {
+    "version": "2.4.0",
+    "date": "2026-11-09",
+    "url": "https://github.com/helloshu/auto-builds/releases/download/onedrivegui-v2.4.0/OneDriveGUI-2.4.0-amd64.deb",
+    "sha256": "30858339c2e802fae61cddbb5a49d1923359c7be1907064f68188dc9d857365e",
+    "size": 63414264
+  }
+}

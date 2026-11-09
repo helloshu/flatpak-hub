@@ -1,0 +1,47 @@
+id: io.github.bpozdena.OneDriveGUI
+runtime: org.freedesktop.Platform
+runtime-version: "25.08"
+sdk: org.freedesktop.Sdk
+command: onedrive-gui-wrapper
+separate-locales: false
+build-options:
+  no-debuginfo: true
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  - --filesystem=home
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons
+modules:
+  - name: onedrivegui
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 apply_extra.sh /app/bin/apply_extra
+      - install -Dm755 onedrive-gui-wrapper /app/bin/onedrive-gui-wrapper
+      - install -Dm644 io.github.bpozdena.OneDriveGUI.desktop /app/share/applications/io.github.bpozdena.OneDriveGUI.desktop
+      - install -Dm644 io.github.bpozdena.OneDriveGUI.metainfo.xml /app/share/metainfo/io.github.bpozdena.OneDriveGUI.metainfo.xml
+      - install -Dm644 io.github.bpozdena.OneDriveGUI.png /app/share/icons/hicolor/256x256/apps/io.github.bpozdena.OneDriveGUI.png
+    sources:
+      # BEGIN MANAGED EXTRA-DATA
+      - type: extra-data
+        filename: app.deb
+        only-arches:
+          - x86_64
+        url: https://github.com/helloshu/auto-builds/releases/download/onedrivegui-v2.4.0/OneDriveGUI-2.4.0-amd64.deb
+        sha256: 30858339c2e802fae61cddbb5a49d1923359c7be1907064f68188dc9d857365e
+        size: 63414264
+      # END MANAGED EXTRA-DATA
+      - type: file
+        path: apply_extra.sh
+      - type: file
+        path: onedrive-gui-wrapper
+      - type: file
+        path: io.github.bpozdena.OneDriveGUI.desktop
+      - type: file
+        path: io.github.bpozdena.OneDriveGUI.metainfo.xml
+      - type: file
+        path: io.github.bpozdena.OneDriveGUI.png

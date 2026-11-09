@@ -23,6 +23,7 @@ flatpak --user update
 | :--- | :--- | :--- | :--- |
 | `com.rssh.app` | [RSSH](https://github.com/shihuili1218/rssh) | `org.gnome.Platform//51` | [`helloshu/auto-builds`](https://github.com/helloshu/auto-builds) (`rssh-*`) |
 | `io.github.anywhere_labs.DshNext` | [DSH NEXT](https://github.com/anywhere-labs/dsh-desktop)（社区版，x86_64） | `org.freedesktop.Platform//25.08` + `org.electronjs.Electron2.BaseApp` | [`helloshu/auto-builds`](https://github.com/helloshu/auto-builds) (`dsh-desktop-v*`) |
+| `io.github.bpozdena.OneDriveGUI` | [OneDriveGUI](https://github.com/bpozdena/OneDriveGUI)（含 `onedrive` CLI，x86_64） | `org.freedesktop.Platform//25.08` | [`helloshu/auto-builds`](https://github.com/helloshu/auto-builds) (`onedrivegui-v*`) |
 
 ## 3. 自动推送接口（供构建仓库发版末尾调用）
 

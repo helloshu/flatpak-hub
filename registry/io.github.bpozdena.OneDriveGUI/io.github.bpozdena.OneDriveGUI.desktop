@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OneDriveGUI
+Comment=A simple GUI for Linux OneDrive Client with multi-account support
+Exec=onedrive-gui-wrapper %U
+Terminal=false
+Type=Application
+Icon=io.github.bpozdena.OneDriveGUI
+Categories=Network;Office;FileTransfer;
+StartupNotify=true
+StartupWMClass=OneDriveGUI

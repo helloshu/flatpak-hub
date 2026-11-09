@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.bpozdena.OneDriveGUI</id>
+  <name>OneDriveGUI</name>
+  <summary>A simple GUI for Linux OneDrive Client with multi-account support</summary>
+  <developer id="io.github.bpozdena">
+    <name>Boris Pozdena</name>
+  </developer>
+  <metadata_license>MIT</metadata_license>
+  <project_license>GPL-3.0-only</project_license>
+  <description>
+    <p>OneDriveGUI is a simple graphical management interface for the Linux OneDrive client (abraunegg/onedrive), supporting multiple accounts, real-time sync monitoring, and configuration management.</p>
+    <p>This Flatpak wrapper fetches the self-contained Linux package built by helloshu/auto-builds at install time via extra-data, including a bundled Python 3.12 + PySide6 runtime and fallback abraunegg/onedrive v2.5.12 CLI.</p>
+  </description>
+  <launchable type="desktop-id">io.github.bpozdena.OneDriveGUI.desktop</launchable>
+  <url type="homepage">https://github.com/bpozdena/OneDriveGUI</url>
+  <url type="vcs-browser">https://github.com/helloshu/auto-builds</url>
+  <url type="bugtracker">https://github.com/helloshu/flatpak-hub/issues</url>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="2.4.0" date="2026-11-09"/>
+  </releases>
+</component>
