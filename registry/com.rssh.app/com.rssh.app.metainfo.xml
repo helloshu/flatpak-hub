@@ -18,6 +18,7 @@
   <url type="bugtracker">https://github.com/helloshu/flatpak-hub/issues</url>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="1.0.10" date="2026-11-11"/>
     <release version="1.0.8" date="2026-11-04"/>
   </releases>
 </component>
