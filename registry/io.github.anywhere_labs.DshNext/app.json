@@ -7,10 +7,10 @@
   "tag_prefix": "dsh-desktop-v",
   "asset_regex": "^DSH-NEXT-.*-amd64\\.deb$",
   "pin": {
-    "version": "2.0.22-next",
-    "date": "2026-11-06",
-    "url": "https://github.com/helloshu/auto-builds/releases/download/dsh-desktop-v2.0.22-next/DSH-NEXT-2.0.22-next-amd64.deb",
-    "sha256": "334e6dd9deae78613f465bc557570c5f84c43c35c75f51c6bda8e75cf6663493",
-    "size": 335718568
+    "version": "2.0.23-next",
+    "date": "2026-11-16",
+    "url": "https://github.com/helloshu/auto-builds/releases/download/dsh-desktop-v2.0.23-next/DSH-NEXT-2.0.23-next-amd64.deb",
+    "sha256": "1bdecceeeb89fc1c4ca2868cd48aa0e630aba549b62b1c29f01172c49de24006",
+    "size": 342814456
   }
 }
