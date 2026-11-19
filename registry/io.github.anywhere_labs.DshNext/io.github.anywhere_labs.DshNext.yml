@@ -36,9 +36,9 @@ modules:
         filename: app.deb
         only-arches:
           - x86_64
-        url: https://github.com/helloshu/auto-builds/releases/download/dsh-desktop-v2.0.23-next/DSH-NEXT-2.0.23-next-amd64.deb
-        sha256: 1bdecceeeb89fc1c4ca2868cd48aa0e630aba549b62b1c29f01172c49de24006
-        size: 342814456
+        url: https://github.com/helloshu/auto-builds/releases/download/dsh-desktop-v2.0.24-next/DSH-NEXT-2.0.24-next-amd64.deb
+        sha256: f06c03c2809ed9c18e0828dacc2a8e778e861ac7418c9c40620b697f30b1102c
+        size: 348972604
       # END MANAGED EXTRA-DATA
       - type: file
         path: apply_extra.sh
