@@ -7,10 +7,10 @@
   "tag_prefix": "rssh-",
   "asset_regex": "^rssh-.*-linux-x86_64\\.deb$",
   "pin": {
-    "version": "1.0.12",
-    "date": "2026-11-14",
-    "url": "https://github.com/helloshu/auto-builds/releases/download/rssh-v1.0.12/rssh-1.0.12-linux-x86_64.deb",
-    "sha256": "450ff5b5cb3e4e8857fcede86b45afc32876594dad9433f68c8642e504c01ca6",
-    "size": 21763328
+    "version": "1.0.13",
+    "date": "2026-11-26",
+    "url": "https://github.com/helloshu/auto-builds/releases/download/rssh-v1.0.13/rssh-1.0.13-linux-x86_64.deb",
+    "sha256": "b6b65c7f4b6cb3feaaf2fc9b9c842d46d6ce8c39349e3b2b514e01566704b0c2",
+    "size": 23648286
   }
 }
